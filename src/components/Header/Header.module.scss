@@ -1,0 +1,20 @@
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 16px;
+}
+.nav {
+  display: flex;
+  gap: 48px;
+}
+.sections {
+  display: flex;
+  gap: 20px;
+}
+.link {
+  color: black;
+}
+.active {
+  border-bottom: 2px solid rgba(0, 0, 0, 0.3);
+}

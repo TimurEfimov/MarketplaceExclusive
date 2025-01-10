@@ -1,0 +1,37 @@
+.wrapper {
+  color: white;
+  background-color: black;
+}
+
+.flexFooter {
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 60px;
+}
+
+.flexList {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.link {
+  margin-bottom: 16px;
+  color: white;
+}
+
+.input {
+  background-color: black;
+  border: 1px solid white;
+  max-width: 217px;
+  padding: 12px 16px;
+  color: white;
+  border-radius: 3px;
+}
+
+.icon {
+  position: absolute;
+  right: 24px;
+  top: 8px;
+  cursor: pointer;
+}
