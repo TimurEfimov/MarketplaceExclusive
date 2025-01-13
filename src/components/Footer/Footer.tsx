@@ -27,12 +27,12 @@ const Footer: React.FC = () => {
   ];
 
   return (
-    <div className={styles.wrapper}>
+    <footer className={styles.wrapper}>
       <div className="container">
-        <div className={styles.flexFooter}>
+        <div className={styles.footer}>
           <div>
             <h4 style={{ marginBottom: "24px" }}>Exclusive</h4>
-            <ul className={styles.flexList}>
+            <ul className={styles.list}>
               <li>Subscribe</li>
               <li>Get 10% off your first order</li>
               <li style={{ position: "relative" }}>
@@ -47,9 +47,9 @@ const Footer: React.FC = () => {
                   <path
                     d="M9.91199 11.9998H3.99999L2.02299 4.1348C2.01033 4.0891 2.00262 4.04216 1.99999 3.9948C1.97799 3.2738 2.77199 2.7738 3.45999 3.1038L22 11.9998L3.45999 20.8958C2.77999 21.2228 1.99599 20.7368 1.99999 20.0288C2.00201 19.9655 2.01313 19.9029 2.03299 19.8428L3.49999 14.9998"
                     stroke="#FAFAFA"
-                    stroke-width="1.5"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
+                    strokeWidth="1.5"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
                   />
                 </svg>
                 <input
@@ -65,18 +65,18 @@ const Footer: React.FC = () => {
               <h4 style={{ marginBottom: "24px" }}>{item.title}</h4>
               <ul>
                 {item.points.map((point, i) => (
-                  <a href="#">
-                    <li className={styles.link} key={i}>
+                  <li className={styles.link} key={i}>
+                    <a href="#" style={{ color: "white" }}>
                       {point}
-                    </li>
-                  </a>
+                    </a>
+                  </li>
                 ))}
               </ul>
             </div>
           ))}
         </div>
       </div>
-    </div>
+    </footer>
   );
 };
 

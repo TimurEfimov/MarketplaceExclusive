@@ -1,0 +1,16 @@
+.item {
+  max-width: 270px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  font-weight: 500;
+}
+
+.price {
+  color: #db4444;
+}
+
+.img {
+  max-width: 270px;
+  height: 250px;
+}

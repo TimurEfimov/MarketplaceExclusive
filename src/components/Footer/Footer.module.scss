@@ -3,13 +3,13 @@
   background-color: black;
 }
 
-.flexFooter {
+.footer {
   display: flex;
   justify-content: space-between;
   padding-bottom: 60px;
 }
 
-.flexList {
+.list {
   display: flex;
   flex-direction: column;
   gap: 16px;
@@ -17,7 +17,6 @@
 
 .link {
   margin-bottom: 16px;
-  color: white;
 }
 
 .input {

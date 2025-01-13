@@ -9,25 +9,27 @@ const Header: React.FC = () => {
   const list: string[] = ["Home", "Contact", "About", "Sign Up"];
 
   return (
-    <div className="container">
-      <header className={styles.header}>
+    <header className={styles.header}>
+      <a href="/">
+        <img src={logo} alt="logo" />
+      </a>
+      <nav className={styles.nav}>
+        {list.map((title, i) => (
+          <a href="#" key={i} className={styles.link}>
+            {title}
+          </a>
+        ))}
+      </nav>
+      <div className={styles.sections}>
+        <Search />
         <a href="/">
-          <img src={logo} alt="logo" />
+          <img src={wishlist} alt="wishlist" />
         </a>
-        <nav className={styles.nav}>
-          {list.map((title, i) => <a href="#" key={i} className={styles.link}>{title}</a>)}
-        </nav>
-        <div className={styles.sections}>
-          <Search />
-          <a href="/">
-            <img src={wishlist} alt="wishlist" />
-          </a>
-          <a href="/">
-            <img src={cart} alt="cart" />
-          </a>
-        </div>
-      </header>
-    </div>
+        <a href="/">
+          <img src={cart} alt="cart" />
+        </a>
+      </div>
+    </header>
   );
 };
 

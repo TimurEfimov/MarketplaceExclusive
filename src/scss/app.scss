@@ -1,4 +1,9 @@
-@import "./reset.scss";
+@import "./reset";
+@import "./variables";
+
+a {
+  color: black;
+}
 
 .container {
   max-width: 1170px;
@@ -6,8 +11,18 @@
   padding-top: 40px;
 }
 
-hr {
-  border: none;
+.line {
+  position: relative;
+  width: 100vw;
+  left: 50%;
+  margin-left: -50vw;
   height: 1px;
-  background: rgba(0, 0, 0, 0.3);
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+.subtitle {
+  color: $red;
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }

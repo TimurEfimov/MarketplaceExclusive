@@ -1,0 +1,27 @@
+.welcome {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 40px;
+  margin-bottom: 140px;
+}
+
+.title {
+  font-size: 36px;
+  margin: 20px 0 60px 0;
+}
+
+.items {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(1, 1fr);
+  grid-column-gap: 30px;
+  grid-row-gap: 60px;
+  margin-bottom: 140px;
+}
+
+.section {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
