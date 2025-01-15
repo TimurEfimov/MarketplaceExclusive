@@ -20,9 +20,25 @@ a {
   background-color: rgba(0, 0, 0, 0.4);
 }
 
+.title {
+  font-size: 36px;
+  margin: 20px 0 60px 0;
+}
+
 .subtitle {
   color: $red;
   display: flex;
   align-items: center;
   gap: 10px;
+}
+
+.button {
+  padding: 16px 48px;
+  color: white;
+  background-color: $red;
+  border-radius: 4px;
+  margin-bottom: 140px;
+  display: flex;
+  margin: 0 auto;
+  margin-bottom: 140px;
 }
