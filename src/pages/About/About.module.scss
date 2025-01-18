@@ -1,0 +1,17 @@
+.root {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 140px;
+}
+
+.title {
+  font-size: 54px;
+  font-weight: 600;
+  margin-bottom: 40px;
+}
+
+.desc {
+  margin-bottom: 24px;
+  line-height: 26px;
+}

@@ -37,16 +37,24 @@ const NewArrival: React.FC = () => {
 
   return (
     <>
-      <div className="subtitle">
-        <img src={redline} alt="" />
-        <h5>Featured</h5>
-      </div>
-      <h3 className="title">New Arrival</h3>
-      <div className={styles.section}>
-        {news.map((obj, i) => (
-          <PatternArrival {...obj} key={i} style={{ gridArea: gridAreas[i] }} />
-        ))}
-      </div>
+      {news.length > 0 && (
+        <>
+          <div className="subtitle">
+            <img src={redline} alt="" />
+            <h5>Featured</h5>
+          </div>
+          <h3 className="title">New Arrival</h3>
+          <div className={styles.section}>
+            {news.map((obj, i) => (
+              <PatternArrival
+                {...obj}
+                key={i}
+                style={{ gridArea: gridAreas[i] }}
+              />
+            ))}
+          </div>
+        </>
+      )}
     </>
   );
 };

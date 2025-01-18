@@ -1,0 +1,28 @@
+.root {
+  margin: 0 auto;
+  margin-top: 135px;
+  max-width: 370px;
+
+  h1 {
+    font-size: 36px;
+    font-weight: 500;
+  }
+
+  h2 {
+    font-size: 16px;
+    margin: 24px 0 48px 0;
+  }
+
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+  }
+
+  input {
+    max-width: 370px;
+    border: none;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.4);
+    padding: 8px 0;
+  }
+}

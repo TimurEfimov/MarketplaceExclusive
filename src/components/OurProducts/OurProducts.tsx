@@ -1,25 +1,20 @@
 import React from "react";
 import styles from "./OurProducts.module.scss";
 
-import { item, Meta } from "../../pages/Home/Home";
+import { ItemsData } from "../../redux/slices/itemsSlice";
 import redline from "/subtitleLine.svg";
 import ItemBlock from "../../components/ItemBlock";
 import Skeleton from "../../components/ItemBlock/Skeleton";
 import Pagination from "../../components/Pagination/Pagination";
+import { useSelector } from "react-redux";
 
 interface OurProductsProps {
-  pages: Meta | null;
-  items: item[];
-  loading: boolean;
   onChangePage: (num: number) => void;
 }
 
-const OurProducts: React.FC<OurProductsProps> = ({
-  pages,
-  items,
-  onChangePage,
-  loading,
-}) => {
+const OurProducts: React.FC<OurProductsProps> = ({ onChangePage }) => {
+  const { items, pages, status } = useSelector(ItemsData);
+
   const renderSkeletons = [...new Array(8)].map((_, index) => (
     <Skeleton key={index} />
   ));
@@ -43,9 +38,11 @@ const OurProducts: React.FC<OurProductsProps> = ({
       </div>
       <h3 className="title">Explore Our Products</h3>
       <div className={styles.items}>
-        {loading ? renderSkeletons : renderItems}
+        {status === "loading" ? renderSkeletons : renderItems}
       </div>
-      <button className="button">View All Products</button>
+      <div className="centered">
+        <a className="button">View All Products</a>
+      </div>
     </>
   );
 };

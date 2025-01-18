@@ -38,7 +38,11 @@ a {
   background-color: $red;
   border-radius: 4px;
   margin-bottom: 140px;
+  width: fit-content;
+  cursor: pointer;
+}
+
+.centered {
   display: flex;
-  margin: 0 auto;
-  margin-bottom: 140px;
+  justify-content: center;
 }

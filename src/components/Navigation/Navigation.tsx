@@ -21,7 +21,7 @@ const Navigation: React.FC = () => {
           <a href="#">
             {name}
             <svg
-            className={styles.arrow}
+              className={styles.arrow}
               width="24"
               height="24"
               viewBox="0 0 24 24"

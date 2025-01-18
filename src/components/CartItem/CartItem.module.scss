@@ -1,0 +1,27 @@
+.count {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  border: 1.5px solid rgba(0, 0, 0, 0.4);
+  border-radius: 4px;
+  padding: 6px 12px;
+}
+
+.plusMinus {
+  display: flex;
+  flex-direction: column;
+}
+
+.title {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+
+  img {
+    width: 54px;
+    height: 54px;
+  }
+  h6 {
+    font-weight: 400;
+  }
+}

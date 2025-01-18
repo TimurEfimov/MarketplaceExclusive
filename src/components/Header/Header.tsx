@@ -1,4 +1,6 @@
 import React from "react";
+import { Link } from "react-router-dom";
+
 import Search from "../Search/Search";
 import logo from "/logo.svg";
 import wishlist from "/wishlist.svg";
@@ -15,9 +17,9 @@ const Header: React.FC = () => {
       </a>
       <nav className={styles.nav}>
         {list.map((title, i) => (
-          <a href="#" key={i} className={styles.link}>
+          <Link to={title.toLowerCase().replace(/\s+/g, "")} key={i} className={styles.link}>
             {title}
-          </a>
+          </Link>
         ))}
       </nav>
       <div className={styles.sections}>
@@ -25,9 +27,9 @@ const Header: React.FC = () => {
         <a href="/">
           <img src={wishlist} alt="wishlist" />
         </a>
-        <a href="/">
+        <Link to="cart">
           <img src={cart} alt="cart" />
-        </a>
+        </Link>
       </div>
     </header>
   );
