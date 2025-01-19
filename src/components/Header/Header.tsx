@@ -6,18 +6,27 @@ import logo from "/logo.svg";
 import wishlist from "/wishlist.svg";
 import cart from "/cart.svg";
 import styles from "./Header.module.scss";
+import { useSelector } from "react-redux";
+import { RootState } from "../../redux/store";
 
 const Header: React.FC = () => {
   const list: string[] = ["Home", "Contact", "About", "Sign Up"];
 
+  const totalCart = useSelector((state: RootState) => state.cart.totalCount);
+
   return (
+    
     <header className={styles.header}>
       <a href="/">
         <img src={logo} alt="logo" />
       </a>
       <nav className={styles.nav}>
         {list.map((title, i) => (
-          <Link to={title.toLowerCase().replace(/\s+/g, "")} key={i} className={styles.link}>
+          <Link
+            to={title.toLowerCase().replace(/\s+/g, "")}
+            key={i}
+            className={styles.link}
+          >
             {title}
           </Link>
         ))}
@@ -29,6 +38,7 @@ const Header: React.FC = () => {
         </a>
         <Link to="cart">
           <img src={cart} alt="cart" />
+          {totalCart >= 1 && <b className={styles.total}>{totalCart}</b>}
         </Link>
       </div>
     </header>

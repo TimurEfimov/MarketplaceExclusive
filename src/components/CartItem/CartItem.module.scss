@@ -2,14 +2,30 @@
   display: flex;
   align-items: center;
   gap: 16px;
-  border: 1.5px solid rgba(0, 0, 0, 0.4);
   border-radius: 4px;
   padding: 6px 12px;
+}
+
+.delete {
+  position: absolute;
+  top: 15px;
+  left: 30px;
+  cursor: pointer;
 }
 
 .plusMinus {
   display: flex;
   flex-direction: column;
+
+  svg {
+    opacity: 0.7;
+    transition: 0.3s;
+    cursor: pointer;
+
+    &:hover {
+      opacity: 1;
+    }
+  }
 }
 
 .title {
@@ -23,5 +39,11 @@
   }
   h6 {
     font-weight: 400;
+    font-size: 12px;
   }
+}
+
+span {
+  display: flex;
+  align-items: center;
 }

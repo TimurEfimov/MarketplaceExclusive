@@ -1,5 +1,6 @@
 import React from "react";
 import styles from "./Footer.module.scss";
+import { Link } from "react-router-dom";
 
 interface ListItem {
   title: string;
@@ -66,9 +67,12 @@ const Footer: React.FC = () => {
               <ul>
                 {item.points.map((point, i) => (
                   <li className={styles.link} key={i}>
-                    <a href="#" style={{ color: "white" }}>
+                    <Link
+                      to={point.toLowerCase().replace(/\s+/g, "")}
+                      style={{ color: "white" }}
+                    >
                       {point}
-                    </a>
+                    </Link>
                   </li>
                 ))}
               </ul>

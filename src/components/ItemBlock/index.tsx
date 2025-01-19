@@ -1,13 +1,30 @@
 import React from "react";
 import styles from "./ItemBlock.module.scss";
+import { useDispatch } from "react-redux";
+import { addItem } from "../../redux/slices/cartSlice";
 
-interface ItemBlockProps {
+interface ItemBlock {
+  id: number;
   price: number;
   title: string;
   imgUrl: string;
+  count: number;
 }
 
-const ItemBlock: React.FC<ItemBlockProps> = ({ price, title, imgUrl }) => {
+const ItemBlock: React.FC<ItemBlock> = ({ id, price, title, imgUrl }) => {
+  const dispatch = useDispatch();
+
+  function onClickAdd() {
+    const item: ItemBlock = {
+      id,
+      title,
+      price,
+      imgUrl,
+      count: 0,
+    };
+    dispatch(addItem(item));
+  }
+
   return (
     <div className={styles.item}>
       <div style={{ position: "relative" }}>
@@ -29,7 +46,9 @@ const ItemBlock: React.FC<ItemBlockProps> = ({ price, title, imgUrl }) => {
             strokeLinejoin="round"
           />
         </svg>
-        <button className={styles.button}>Add to Cart</button>
+        <button className={styles.button} onClick={onClickAdd}>
+          Add to Cart
+        </button>
       </div>
       <h4>{title}</h4>
       <span className={styles.price}>${price}</span>
