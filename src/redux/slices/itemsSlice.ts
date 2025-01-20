@@ -1,6 +1,6 @@
+import axios from "axios";
 import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { RootState } from "../store";
-import axios from "axios";
 
 export interface item {
   id: number;

@@ -18,6 +18,14 @@ a {
   height: 1px;
   background-color: rgba(0, 0, 0, 0.4);
 }
+.items {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(1, 1fr);
+  grid-column-gap: 30px;
+  grid-row-gap: 60px;
+  margin-bottom: 60px;
+}
 
 .title {
   font-size: 36px;
@@ -37,9 +45,21 @@ a {
   background-color: $red;
   border-radius: 4px;
   margin-bottom: 140px;
-  
+
   width: fit-content;
   cursor: pointer;
+}
+
+.button-white {
+  padding: 16px 48px;
+  border: 1px solid rgba(0, 0, 0, 0.5);
+  border-radius: 4px;
+  transition: 0.3s;
+
+  &:hover {
+    background-color: black;
+    color: white;
+  }
 }
 
 .centered {

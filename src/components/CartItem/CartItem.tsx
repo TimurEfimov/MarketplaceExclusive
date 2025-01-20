@@ -38,9 +38,9 @@ const CartItem: React.FC<cartItem> = ({ title, imgUrl, count, price, id }) => {
           <path
             d="M9 15L12 12M15 9L11.9994 12M11.9994 12L9 9M12 12L15 15"
             stroke="white"
-            stroke-width="2"
-            stroke-linecap="round"
-            stroke-linejoin="round"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
           />
         </svg>
         <h6>{title}</h6>

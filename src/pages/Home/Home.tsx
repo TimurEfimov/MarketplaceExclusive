@@ -1,6 +1,7 @@
 import React from "react";
 
 import { fetchItems } from "../../redux/slices/itemsSlice";
+import { fetchWishlsitItems } from "../../redux/slices/wishlistSlice";
 import { useAppDispatch } from "../../redux/store";
 
 import Navigation from "../../components/Navigation/Navigation";
@@ -28,8 +29,18 @@ const Home: React.FC = () => {
     }
   };
 
+  const getWishlistItems = async () => {
+    try {
+      dispatch(fetchWishlsitItems());
+    } catch (err) {
+      console.log(err);
+      alert("Произошла ошибка загрузки товаров");
+    }
+  };
+
   React.useEffect(() => {
     getItems();
+    getWishlistItems();
   }, [currentPage]);
 
   return (

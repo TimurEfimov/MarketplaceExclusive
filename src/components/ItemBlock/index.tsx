@@ -2,20 +2,23 @@ import React from "react";
 import styles from "./ItemBlock.module.scss";
 import { useDispatch } from "react-redux";
 import { addItem } from "../../redux/slices/cartSlice";
+import { cartItem } from "../../redux/slices/cartSlice";
+import { useAppDispatch } from "../../redux/store";
+import { addItemToWishlist } from "../../redux/slices/wishlistSlice";
 
 interface ItemBlock {
   id: number;
   price: number;
   title: string;
   imgUrl: string;
-  count: number;
 }
 
 const ItemBlock: React.FC<ItemBlock> = ({ id, price, title, imgUrl }) => {
   const dispatch = useDispatch();
+  const appDispatch = useAppDispatch();
 
   function onClickAdd() {
-    const item: ItemBlock = {
+    const item: cartItem = {
       id,
       title,
       price,
@@ -25,11 +28,23 @@ const ItemBlock: React.FC<ItemBlock> = ({ id, price, title, imgUrl }) => {
     dispatch(addItem(item));
   }
 
+  function onClickAddToWishlist() {
+    const item: cartItem = {
+      id,
+      title,
+      price,
+      imgUrl,
+      count: 0,
+    };
+    appDispatch(addItemToWishlist(item));
+  }
+
   return (
     <div className={styles.item}>
       <div style={{ position: "relative" }}>
         <img src={imgUrl} className={styles.img} alt={title} />
         <svg
+          onClick={onClickAddToWishlist}
           className={styles.wishlist}
           width="34"
           height="34"

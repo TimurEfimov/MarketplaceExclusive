@@ -13,9 +13,11 @@ const Header: React.FC = () => {
   const list: string[] = ["Home", "Contact", "About", "Sign Up"];
 
   const totalCart = useSelector((state: RootState) => state.cart.totalCount);
+  const totalWishlist = useSelector(
+    (state: RootState) => state.wishlist.totalCount
+  );
 
   return (
-    
     <header className={styles.header}>
       <a href="/">
         <img src={logo} alt="logo" />
@@ -33,9 +35,12 @@ const Header: React.FC = () => {
       </nav>
       <div className={styles.sections}>
         <Search />
-        <a href="/">
+        <Link to="wishlist">
           <img src={wishlist} alt="wishlist" />
-        </a>
+          {totalWishlist >= 1 && (
+            <b className={styles.total}>{totalWishlist}</b>
+          )}
+        </Link>
         <Link to="cart">
           <img src={cart} alt="cart" />
           {totalCart >= 1 && <b className={styles.total}>{totalCart}</b>}

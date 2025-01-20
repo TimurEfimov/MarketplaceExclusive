@@ -11,13 +11,12 @@ import { useSelector } from "react-redux";
 interface OurProductsProps {
   onChangePage: (num: number) => void;
 }
+export const renderSkeletons = [...new Array(8)].map((_, index) => (
+  <Skeleton key={index} />
+));
 
 const OurProducts: React.FC<OurProductsProps> = ({ onChangePage }) => {
   const { items, pages, status } = useSelector(ItemsData);
-
-  const renderSkeletons = [...new Array(8)].map((_, index) => (
-    <Skeleton key={index} />
-  ));
 
   const renderItems = items.map((obj) => <ItemBlock {...obj} key={obj.id} />);
 
@@ -37,7 +36,7 @@ const OurProducts: React.FC<OurProductsProps> = ({ onChangePage }) => {
         )}
       </div>
       <h3 className="title">Explore Our Products</h3>
-      <div className={styles.items}>
+      <div className="items">
         {status === "loading" ? renderSkeletons : renderItems}
       </div>
       <div className="centered">

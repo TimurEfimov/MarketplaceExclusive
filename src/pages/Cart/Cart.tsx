@@ -24,10 +24,10 @@ const Cart: React.FC = () => {
         </div>
       ))}
       <div className={styles.links}>
-        <Link to="/" className={styles.button}>
+        <Link to="/" className="button-white">
           Return to Shop
         </Link>
-        <Link to="." className={styles.button}>
+        <Link to="." className="button-white">
           Update Cart
         </Link>
       </div>

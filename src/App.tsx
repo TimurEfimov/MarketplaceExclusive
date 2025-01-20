@@ -8,6 +8,7 @@ import About from "./pages/About/About";
 import NotFound from "./pages/NotFound.tsx/NotFound";
 import SignUp from "./pages/SignUp/SignUp";
 import Cart from "./pages/Cart/Cart";
+import Wishlist from "./pages/Wishlist/Wishlist";
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="home" element={<Home />} />
           <Route path="shop" element={<Home />} />
+          <Route path="wishlist" element={<Wishlist />} />
           <Route path="cart" element={<Cart />} />
           <Route path="about" element={<About />} />
           <Route path="signup" element={<SignUp />} />
