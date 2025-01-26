@@ -7,6 +7,7 @@ export interface item {
   imgUrl: string;
   title: string;
   price: number;
+  isFavorite?: boolean;
 }
 
 export interface Meta {
@@ -70,7 +71,10 @@ export const itemsSlice = createSlice({
       .addCase(
         fetchItems.fulfilled,
         (state, action: PayloadAction<{ items: item[]; meta: Meta }>) => {
-          state.items = action.payload.items;
+          state.items = action.payload.items.map((item) => ({
+            ...item,
+            isFavorite: false,
+          }));
           state.pages = action.payload.meta;
           state.status = Status.SUCCESS;
         }
@@ -85,6 +89,7 @@ export const itemsSlice = createSlice({
 });
 
 export const ItemsData = (state: RootState) => state.itemsData;
+export const selectItems = (state: RootState) => state.itemsData.items;
 
 export const { setItems } = itemsSlice.actions;
 

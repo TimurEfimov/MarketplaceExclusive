@@ -2,11 +2,12 @@ import React from "react";
 import styles from "./OurProducts.module.scss";
 
 import { ItemsData } from "../../redux/slices/itemsSlice";
+import { useSelector } from "react-redux";
+import { selectWishlist } from "../../redux/slices/wishlistSlice";
 import redline from "/subtitleLine.svg";
 import ItemBlock from "../../components/ItemBlock";
 import Skeleton from "../../components/ItemBlock/Skeleton";
 import Pagination from "../../components/Pagination/Pagination";
-import { useSelector } from "react-redux";
 
 interface OurProductsProps {
   onChangePage: (num: number) => void;
@@ -16,9 +17,18 @@ export const renderSkeletons = [...new Array(8)].map((_, index) => (
 ));
 
 const OurProducts: React.FC<OurProductsProps> = ({ onChangePage }) => {
+  const wishlist = useSelector(selectWishlist);
+  const favoriteIds = wishlist.map((item) => item.id);
+
   const { items, pages, status } = useSelector(ItemsData);
 
-  const renderItems = items.map((obj) => <ItemBlock {...obj} key={obj.id} />);
+  const renderItems = items.map((obj) => (
+    <ItemBlock
+      {...obj}
+      key={obj.id}
+      isFavorite={favoriteIds.includes(obj.id)}
+    />
+  ));
 
   return (
     <>

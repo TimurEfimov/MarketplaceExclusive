@@ -4,29 +4,18 @@ import { useAppDispatch } from "../../redux/store";
 import styles from "./Wishlist.module.scss";
 
 import ItemBlock from "../../components/ItemBlock";
-import { fetchWishlsitItems } from "../../redux/slices/wishlistSlice";
 import { wishlistData } from "../../redux/slices/wishlistSlice";
+import { selectWishlistById } from "../../redux/slices/wishlistSlice";
 import { renderSkeletons } from "../../components/OurProducts/OurProducts";
-
 
 const Wishlist: React.FC = () => {
   const dispatch = useAppDispatch();
 
-  const { items, totalCount, status } = useSelector(wishlistData);
+  const { totalCount, status } = useSelector(wishlistData);
+
+  const items = useSelector(selectWishlistById);
+
   const renderItems = items.map((obj) => <ItemBlock {...obj} key={obj.id} />);
-
-  const getWishlistItems = async () => {
-    try {
-      dispatch(fetchWishlsitItems());
-    } catch (err) {
-      console.log(err);
-      alert("Произошла ошибка загрузки товаров");
-    }
-  };
-
-  React.useEffect(() => {
-    getWishlistItems();
-  }, []);
 
   return (
     <>
