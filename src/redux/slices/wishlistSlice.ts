@@ -16,32 +16,48 @@ export const fetchWishlistItems = createAsyncThunk(
 export const addItemToWishlist = createAsyncThunk(
   "wishlist/addItemToWishlist",
   async (id: number) => {
-    console.log(id);
     const { data } = await axios.post(
       `https://b76b48dd1279d78e.mokky.dev/wishlist`,
       { id }
     );
-    console.log(data);
     return data;
+  }
+);
+
+export const deleteItemFromWishlist = createAsyncThunk(
+  "wishlist/deleteItemFromWishlist",
+  async (id: number) => {
+    const idDelete = id;
+    await axios.delete(`https://b76b48dd1279d78e.mokky.dev/wishlist/${id}`);
+    return idDelete;
   }
 );
 
 export const selectWishlistById = (state: RootState) => {
   const itemsData = state.itemsData.items;
-  const wishlistId = state.wishlist.items;
+  const wishlistItems = state.wishlist.items;
 
-  const ids = wishlistId.map((item) => item.id);
+  // Создаем маппинг id -> idDelete для быстрого доступа
+  const idToDeleteMap = new Map();
+  wishlistItems.forEach((item) => {
+    if (item.idDelete) {
+      idToDeleteMap.set(item.id, item.idDelete);
+    }
+  });
 
+  // Фильтруем только элементы, чьи id есть в вишлисте
   return itemsData
-    .filter((item) => ids.includes(item.id))
+    .filter((item) => wishlistItems.some((wishItem) => wishItem.id === item.id))
     .map((item) => ({
       ...item,
       isFavorite: true,
+      idDelete: idToDeleteMap.get(item.id) || null, // Добавляем idDelete конкретного элемента
     }));
 };
 
 interface WishlistItem {
   id: number;
+  idDelete?: number;
 }
 
 interface wishlistState {
@@ -74,6 +90,7 @@ export const wishlistSlice = createSlice({
           state.status = Status.SUCCESS;
         }
       )
+
       .addCase(fetchWishlistItems.rejected, (state) => {
         state.status = Status.ERROR;
         state.items = [];
@@ -90,6 +107,27 @@ export const wishlistSlice = createSlice({
         }
       )
       .addCase(addItemToWishlist.rejected, (state) => {
+        state.status = Status.ERROR;
+      })
+
+      .addCase(deleteItemFromWishlist.pending, (state) => {
+        state.status = Status.LOADING;
+      })
+      .addCase(
+        deleteItemFromWishlist.fulfilled,
+        (state, action: PayloadAction<number>) => {
+          state.status = Status.SUCCESS;
+          const idDelete = action.payload;
+
+          console.log("Он должен был удалиться: " + idDelete);
+
+          state.items = state.items.filter((item) => item.id !== idDelete);
+
+          state.totalCount -= 1;
+        }
+      )
+
+      .addCase(deleteItemFromWishlist.rejected, (state) => {
         state.status = Status.ERROR;
       });
   },

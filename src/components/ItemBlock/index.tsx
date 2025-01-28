@@ -4,9 +4,13 @@ import { useDispatch } from "react-redux";
 import { addItem } from "../../redux/slices/cartSlice";
 import { cartItem } from "../../redux/slices/cartSlice";
 import { useAppDispatch } from "../../redux/store";
-import { addItemToWishlist } from "../../redux/slices/wishlistSlice";
+import {
+  addItemToWishlist,
+  deleteItemFromWishlist,
+} from "../../redux/slices/wishlistSlice";
 import usualFavorite from "/favoriteUsual.svg";
 import addFavorite from "/favoriteAdd.svg";
+import Delete from "/deleteFromWishlist.svg";
 import { useLocation } from "react-router";
 
 interface ItemBlock {
@@ -15,6 +19,7 @@ interface ItemBlock {
   title: string;
   imgUrl: string;
   isFavorite?: boolean;
+  idDelete?: number;
 }
 
 const ItemBlock: React.FC<ItemBlock> = ({
@@ -23,12 +28,19 @@ const ItemBlock: React.FC<ItemBlock> = ({
   title,
   imgUrl,
   isFavorite,
+  idDelete,
 }) => {
   const dispatch = useDispatch();
   const appDispatch = useAppDispatch();
   const location = useLocation();
 
   const isWishlistPage = location.pathname === "/wishlist";
+
+  function onClickDeleteWishlist() {
+    if (idDelete) {
+      appDispatch(deleteItemFromWishlist(idDelete));
+    }
+  }
 
   function onClickAdd() {
     const item: cartItem = {
@@ -54,7 +66,14 @@ const ItemBlock: React.FC<ItemBlock> = ({
     <div className={styles.item}>
       <div style={{ position: "relative" }}>
         <img src={imgUrl} className={styles.img} alt={title} />
-        {!isWishlistPage && (
+        {isWishlistPage ? (
+          <img
+            src={Delete}
+            alt=""
+            className={styles.wishlist}
+            onClick={onClickDeleteWishlist}
+          />
+        ) : (
           <img
             src={isFavorite ? addFavorite : usualFavorite}
             onClick={onClickAddToWishlist}

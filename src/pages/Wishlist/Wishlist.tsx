@@ -1,6 +1,5 @@
 import React from "react";
 import { useSelector } from "react-redux";
-import { useAppDispatch } from "../../redux/store";
 import styles from "./Wishlist.module.scss";
 
 import ItemBlock from "../../components/ItemBlock";
@@ -9,8 +8,6 @@ import { selectWishlistById } from "../../redux/slices/wishlistSlice";
 import { renderSkeletons } from "../../components/OurProducts/OurProducts";
 
 const Wishlist: React.FC = () => {
-  const dispatch = useAppDispatch();
-
   const { totalCount, status } = useSelector(wishlistData);
 
   const items = useSelector(selectWishlistById);
