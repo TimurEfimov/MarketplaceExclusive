@@ -9,6 +9,7 @@ import NotFound from "./pages/NotFound.tsx/NotFound";
 import SignUp from "./pages/SignUp/SignUp";
 import Cart from "./pages/Cart/Cart";
 import Wishlist from "./pages/Wishlist/Wishlist";
+import Allproducts from "./pages/Allproducts/Allproducts";
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
           <Route path="cart" element={<Cart />} />
           <Route path="about" element={<About />} />
           <Route path="signup" element={<SignUp />} />
+          <Route path="allproducts" element={<Allproducts />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </div>

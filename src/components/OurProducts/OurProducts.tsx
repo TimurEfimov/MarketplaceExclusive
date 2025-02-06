@@ -8,6 +8,7 @@ import redline from "/subtitleLine.svg";
 import ItemBlock from "../../components/ItemBlock";
 import Skeleton from "../../components/ItemBlock/Skeleton";
 import Pagination from "../../components/Pagination/Pagination";
+import { Link } from "react-router-dom";
 
 interface OurProductsProps {
   onChangePage: (num: number) => void;
@@ -50,7 +51,9 @@ const OurProducts: React.FC<OurProductsProps> = ({ onChangePage }) => {
         {status === "loading" ? renderSkeletons : renderItems}
       </div>
       <div className="centered">
-        <a className="button">View All Products</a>
+        <Link className="button" to="allproducts">
+          View All Products
+        </Link>
       </div>
     </>
   );

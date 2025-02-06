@@ -16,6 +16,7 @@ export const fetchWishlistItems = createAsyncThunk(
 export const addItemToWishlist = createAsyncThunk(
   "wishlist/addItemToWishlist",
   async (id: number) => {
+    console.log("api delete");
     const { data } = await axios.post(
       `https://b76b48dd1279d78e.mokky.dev/wishlist`,
       { id }
@@ -37,7 +38,6 @@ export const selectWishlistById = (state: RootState) => {
   const itemsData = state.itemsData.items;
   const wishlistItems = state.wishlist.items;
 
-  // Создаем маппинг id -> idDelete для быстрого доступа
   const idToDeleteMap = new Map();
   wishlistItems.forEach((item) => {
     if (item.idDelete) {
@@ -45,19 +45,18 @@ export const selectWishlistById = (state: RootState) => {
     }
   });
 
-  // Фильтруем только элементы, чьи id есть в вишлисте
   return itemsData
     .filter((item) => wishlistItems.some((wishItem) => wishItem.id === item.id))
     .map((item) => ({
       ...item,
       isFavorite: true,
-      idDelete: idToDeleteMap.get(item.id) || null, // Добавляем idDelete конкретного элемента
+      idDelete: idToDeleteMap.get(item.id) || null,
     }));
 };
 
 interface WishlistItem {
   id: number;
-  idDelete?: number;
+  idDelete: number;
 }
 
 interface wishlistState {
@@ -75,7 +74,11 @@ const initialState: wishlistState = {
 export const wishlistSlice = createSlice({
   name: "wishlist",
   initialState,
-  reducers: {},
+  reducers: {
+    setItems(state, action: PayloadAction<{ items: WishlistItem[] }>) {
+      state.items = action.payload.items;
+    },
+  },
   extraReducers: (builder) => {
     builder
       .addCase(fetchWishlistItems.pending, (state) => {
@@ -120,8 +123,10 @@ export const wishlistSlice = createSlice({
           const idDelete = action.payload;
 
           console.log("Он должен был удалиться: " + idDelete);
-
-          state.items = state.items.filter((item) => item.id !== idDelete);
+          state.items = state.items.filter(
+            (item) => item.idDelete !== idDelete
+          );
+          console.log(state.items);
 
           state.totalCount -= 1;
         }
@@ -146,6 +151,6 @@ export function markFavorites(products: item[], favoriteIds: number[]) {
 export const selectWishlist = (state: RootState) => state.wishlist.items;
 export const wishlistData = (state: RootState) => state.wishlist;
 
-export const {} = wishlistSlice.actions;
+export const { setItems } = wishlistSlice.actions;
 
 export default wishlistSlice.reducer;

@@ -1,0 +1,31 @@
+<svg
+            width="300"
+            height="400"
+            viewBox="0 0 300 400"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <g filter="url(#dropShadow)">
+              <path
+                d="M150 80C174.264 80 194.59 96.5522 204.283 120H95.717C105.41 96.5522 125.736 80 150 80ZM250 160C250 111.515 214.873 75 170 75C125.127 75 90 111.515 90 160V290C90 316.569 113.431 340 145 340H155C186.569 340 210 316.569 210 290V160H250Z"
+                fill="#FF6B8E"
+              />
+            </g>
+
+            <defs>
+              <filter
+                id="dropShadow"
+                x="-50%"
+                y="-50%"
+                width="200%"
+                height="200%"
+              >
+                <feDropShadow
+                  dx="2"
+                  dy="2"
+                  stdDeviation="4"
+                  flood-color="#AAA"
+                />
+              </filter>
+            </defs>
+          </svg>

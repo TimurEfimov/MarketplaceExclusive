@@ -19,6 +19,7 @@ export interface Meta {
 
 interface paramsFilter {
   currentPage: number;
+  limit: number;
 }
 
 interface itemsState {
@@ -37,9 +38,9 @@ export const fetchItems = createAsyncThunk<
   { items: item[]; meta: Meta },
   paramsFilter
 >("item/fetchItemsStatus", async (params) => {
-  const { currentPage } = params;
+  const { currentPage, limit } = params;
   const { data } = await axios.get(
-    `https://b76b48dd1279d78e.mokky.dev/items?page=${currentPage}&limit=8`
+    `https://b76b48dd1279d78e.mokky.dev/items?page=${currentPage}&limit=${limit}`
   );
 
   return data;

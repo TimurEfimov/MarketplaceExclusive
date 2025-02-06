@@ -1,0 +1,13 @@
+<svg width="200" height="200" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <filter id="dropShadow" x="-50%" y="-50%" width="200%" height="200%">
+      <feDropShadow dx="2" dy="2" stdDeviation="4" flood-color="#AAA" />
+    </filter>
+  </defs>
+  <g filter="url(#dropShadow)">
+    <path d="M100 40C116.569 40 130 53.4315 130 70V80H70V70C70 53.4315 83.4315 40 100 40ZM160 100C160 77.1625 142.837 60 120 60H80C57.1625 60 40 77.1625 40 100V160H160V100ZM110 100V65H90V100H110Z" fill="#FFB400" />
+  </g>
+
+  <path d="M50 110H150V120H50V110Z" fill="#FFD666" />
+
+</svg>

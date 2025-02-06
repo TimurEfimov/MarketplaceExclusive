@@ -14,6 +14,7 @@ const Home: React.FC = () => {
   const dispatch = useAppDispatch();
 
   const [currentPage, setCurrentPage] = React.useState(1);
+  const [limit] = React.useState(8);
 
   function onChangePage(num: number) {
     setCurrentPage(num);
@@ -22,7 +23,7 @@ const Home: React.FC = () => {
 
   const getItems = async () => {
     try {
-      dispatch(fetchItems({ currentPage }));
+      dispatch(fetchItems({ currentPage, limit }));
     } catch (err) {
       console.log(err);
       alert("Произошла ошибка загрузки товаров");

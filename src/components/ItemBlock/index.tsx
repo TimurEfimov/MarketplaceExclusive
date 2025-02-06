@@ -55,7 +55,8 @@ const ItemBlock: React.FC<ItemBlock> = ({
 
   function onClickAddToWishlist() {
     if (isFavorite) {
-      console.log("You have had this product in wishlist");
+      idDelete && appDispatch(deleteItemFromWishlist(idDelete));
+      console.log("delete", idDelete);
     } else {
       const item: number = id;
       appDispatch(addItemToWishlist(item));
